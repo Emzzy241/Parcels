@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Parcels.Models;  
+using System;
+using System.Collections.Generic;
 
 namespace Parcels.Tests.ModelTests  // Correct namespace
 {
@@ -44,7 +46,6 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
 
             // Assert
             Assert.AreEqual(parcelsNewValue, newParcel.Dimension);
-
         }
 
         // 4th Test: Test to get weight value of Parcel
@@ -60,9 +61,53 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
 
             // Assert
             Assert.AreEqual(expectedWeight, returnedWeight);
-            
         }
 
+        // 5th Test: Test to set the weight of a parcel
+        [TestMethod]
+        public void SetWeight_SetsValueOfParcelWeight_Void()
+        {
+            // Arrange
+            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            int parcelsNewWeightValue = 60;
+
+            // Act 
+            int parcelsCurrentWeightValue = newParcel.Weight;
+            newParcel.Weight = parcelsNewWeightValue;
+
+            // Assert
+            Assert.AreEqual(parcelsNewWeightValue, newParcel.Weight);
+        }
+
+        // 6th Test: Test to get parcel from list of parcels
+        [TestMethod]
+        public void GetParcel_ReturnsParcel_Parcel()
+        {
+            // Arrange
+            Parcel newParcel1 = new Parcel("20 * 30 * 40", 60);
+            Parcel newParcel2 = new Parcel("20 * 40 * 20", 45);
+            Parcel newParcel3 = new Parcel("20 * 90 * 30", 600);
+            List<object> expectedparcelsList = List<object>{newParcel1, newParcel2, newParcel3};
+            
+            // Act
+            List<string> returnedParcelsList = Parcel.GetParcel(newParcel3);
+
+
+            // Assert
+            CollectionAssert.AreEqual(expectedparcelsList, returnedParcelsList)
+
+        }
+
+
+
+
+        // 9th Test: Test for Attaching an Id to each Parcel
+        // [TestMethod]
+        // public void GetParcelsId_ReturnsParcelsIdNo_Int()
+        // {
+        //     // Arrange
+        //     Parcel newParcel = new Parcel()
+        // }
 
     }    
 }
