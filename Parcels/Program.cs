@@ -19,7 +19,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controlller=Home}/{action=Index}/{id?}"
+            pattern: "{controller=Home}/{action=Index}/{id?}"
         );
 
         app.Run();
