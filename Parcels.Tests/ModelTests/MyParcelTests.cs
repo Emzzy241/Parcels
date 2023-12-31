@@ -18,17 +18,17 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         [TestMethod]
         public void ParcelsConstructor_CreatesInstanceOfParcels_Parcels()
         {
-            Parcel newParcel = new Parcel("50 * 30 * 20", 60);
+            Parcel newParcel = new Parcel("Box","50 * 30 * 20", 60);
 
             Assert.AreEqual(typeof(Parcel), newParcel.GetType());
         }
 
         // 2nd Test: Test to get dimenson of a parcel
         [TestMethod]
-        public void GetDimesnsion_ReturnsTheParcelsDimension_String()
+        public void GetDimension_ReturnsTheParcelsDimension_String()
         {
             // Arrange
-            Parcel newParcel = new Parcel("50 * 30 * 20", 60);
+            Parcel newParcel = new Parcel("Box","50 * 30 * 20", 60);
             string expectedDimension = "50 * 30 * 20";
 
             // Act
@@ -43,7 +43,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void SetDimension_SetsValueOfParcelDimension_Void()
         {
             // Arrange
-            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            Parcel newParcel = new Parcel("Box","20 * 30 * 40", 60);
             string parcelsNewValue = "30 * 40 * 20";
 
             // Act 
@@ -59,7 +59,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void GetWeight_ReturnsWeightValue_Int()
         {
             // Arrange
-            Parcel newParcel = new Parcel("20 * 30 * 40", 40);
+            Parcel newParcel = new Parcel("Box","20 * 30 * 40", 40);
             int expectedWeight = 40;
 
             // Act
@@ -74,7 +74,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void SetWeight_SetsValueOfParcelWeight_Void()
         {
             // Arrange
-            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            Parcel newParcel = new Parcel("Box","20 * 30 * 40", 60);
             int parcelsNewWeightValue = 60;
 
             // Act 
@@ -88,12 +88,12 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
 
         // 6th Test: Test to get all parcels from list of parcels
         [TestMethod]
-        public void GetAllParcel_ReturnsParcel_Parcel()
+        public void GetAllParcel_ReturnsParcel_Parcel("Box",)
         {
             // Arrange
-            Parcel newParcel1 = new Parcel("20 * 30 * 40", 60);
-            Parcel newParcel2 = new Parcel("20 * 40 * 20", 45);
-            Parcel newParcel3 = new Parcel("20 * 90 * 30", 600);
+            Parcel newParcel1 = new Parcel("Box","20 * 30 * 40", 60);
+            Parcel newParcel2 = new Parcel("Box","20 * 40 * 20", 45);
+            Parcel newParcel3 = new Parcel("Box","20 * 90 * 30", 600);
             List<Parcel> expectedparcelsList = new List<Parcel>(){newParcel1, newParcel2, newParcel3};
             
             // Act
@@ -110,11 +110,11 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void GetParcelsId_ReturnsParcelsIdNumber_Int()
         {
             // Arrange
-            Parcel newParcel1 = new Parcel("20 * 30 * 40", 60);
-            Parcel newParcel2 = new Parcel("20 * 40 * 20", 45);
-            Parcel newParcel3 = new Parcel("20 * 90 * 30", 600);
+            Parcel newParcel1 = new Parcel("Box","20 * 30 * 40", 60);
+            Parcel newParcel2 = new Parcel("Box","20 * 40 * 20", 45);
+            Parcel newParcel3 = new Parcel("Box","20 * 90 * 30", 600);
             // Act
-            Parcel returnedParcelId = Parcel.FindParcel(2);
+            Parcel returnedParcelId = Parcel.FindParcel("Box",2);
 
             // Assert
             Assert.AreEqual(newParcel2, returnedParcelId);
@@ -125,7 +125,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void GetEachSide_ReturnsDimensionsOfParcel_Int()
         {
             // Arrange
-            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            Parcel newParcel = new Parcel("Box","20 * 30 * 40", 60);
             int expectedLengthVal = 20;
             int expectedWidthVal = 30;
             int expectedHeightVal = 40;
@@ -144,7 +144,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void Volume_CalculatesVolumeOfParcel_Int()
         {
             // Arrange
-            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            Parcel newParcel = new Parcel("Box","20 * 30 * 40", 60);
             int expectedVolumeValue = 24000;
 
             // Act
@@ -160,7 +160,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void CostShip_CalculatesCostToShipAParcel_Int()
         {
             // Arrange
-             Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+             Parcel newParcel = new Parcel("Box","20 * 30 * 40", 60);
             int expectedCostToShipValue = 24700;
             int shippingCharges = 700;
 
