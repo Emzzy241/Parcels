@@ -140,23 +140,36 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         }
 
         // 9th Test: Test Method Volume() that is called on Dimension
+        [TestMethod]
+        public void Volume_CalculatesVolumeOfParcel_Int()
+        {
+            // Arrange
+            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            int expectedVolumeValue = 24000;
+
+            // Act
+            var dimensions = newParcel.GetEachSide(newParcel.Dimension);
+            int returnedVolumeValue = newParcel.Volume(dimensions.Length, dimensions.Width, dimensions.Height);
+
+            // Assert
+            Assert.AreEqual(expectedVolumeValue, returnedVolumeValue);
+        }
+
+        // 10th Test: Test Method CostShip()
         // [TestMethod]
-        // public void Volume_CalculatesVolumeOfParcel_Int()
+        // public void CostShip_CalculatesCostToShipAParcel_Int()
         // {
         //     // Arrange
-        //     Parcel newParcel = new Parcel("20 * 30 * 40", 60);
-        //     int expectedLengthVal = 20;
-        //     int expectedWidthVal = 30;
-        //     int expectedHeightVal = 40;
-
-        //     int expectedVolumeValue = 24000;
+        //      Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+        //     int expectedCostToShipValue = 24000;
+        //     int shippingCharges = 700;
 
         //     // Act
         //     var dimensions = newParcel.GetEachSide(newParcel.Dimension);
-        //     int returnedVolumeValue = newParcel.Volume(dimensions.Length, dimensions.Width, dimensions.Height);
+        //     int returnedCostToShipValue = newParcel.CostToShip(dimensions.Length, dimensions.Width, dimensions.Height, shippingCharges);
 
         //     // Assert
-        //     Assert.AreEqual(expectedVolumeValue, returnedVolumeValue);
+        //     Assert.AreEqual(expectedCostToShipValue, returnedCostToShipValue);
         // }
         
 
