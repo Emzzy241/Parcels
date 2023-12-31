@@ -6,12 +6,15 @@ namespace Parcels.Models
     {
         public string Dimension { get; set; }
 
+        public int Weight { get; }
         
         
         
-        public Parcel(string myDimesion)
+        
+        public Parcel(string parcelsDimesion, int parcelsWeight)
         {
-            Dimension = myDimesion;
+            Dimension = parcelsDimesion;
+            Weight = parcelsWeight;
         }
     }
 }

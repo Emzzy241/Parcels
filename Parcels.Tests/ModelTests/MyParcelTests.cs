@@ -10,7 +10,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         [TestMethod]
         public void ParcelsConstructor_CreatesInstanceOfParcels_Parcels()
         {
-            Parcel newParcel = new Parcel("50 * 30 * 20");
+            Parcel newParcel = new Parcel("50 * 30 * 20", 60);
 
             Assert.AreEqual(typeof(Parcel), newParcel.GetType());
         }
@@ -20,7 +20,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void GetDimesnsion_ReturnsTheParcelsDimension_String()
         {
             // Arrange
-            Parcel newParcel = new Parcel("50 * 30 * 20");
+            Parcel newParcel = new Parcel("50 * 30 * 20", 60);
             string expectedDimension = "50 * 30 * 20";
 
             // Act
@@ -35,7 +35,7 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         public void SetDimension_SetsValueOfParcelDimension_Void()
         {
             // Arrange
-            Parcel newParcel = new Parcel("20 * 30 * 40");
+            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
             string parcelsNewValue = "30 * 40 * 20";
 
             // Act 
@@ -45,6 +45,22 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
             // Assert
             Assert.AreEqual(parcelsNewValue, newParcel.Dimension);
 
+        }
+
+        // 4th Test: Test to get weight value of Parcel
+        [TestMethod]
+        public void GetWeight_ReturnsWeightValue_Int()
+        {
+            // Arrange
+            Parcel newParcel = new Parcel("20 * 30 * 40", 40);
+            int expectedWeight = 40;
+
+            // Act
+            int returnedWeight = newParcel.Weight;
+
+            // Assert
+            Assert.AreEqual(expectedWeight, returnedWeight);
+            
         }
 
 
