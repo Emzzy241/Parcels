@@ -80,10 +80,10 @@ namespace Parcels.Models
             return lengthVal * widthVal * heightVal;
         } 
 
-        // public int Volume(int lengthVal, int widthVal, int heightVal)
-        // {
-        //     return lengthVal * widthVal * heightVal;
-        // } 
+        public int CostToShip(int lengthVal, int widthVal, int heightVal, int myShippingCharges)
+        {
+            return lengthVal * widthVal * heightVal + myShippingCharges;
+        } 
 
 
     }

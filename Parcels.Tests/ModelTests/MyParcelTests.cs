@@ -156,21 +156,21 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
         }
 
         // 10th Test: Test Method CostShip()
-        // [TestMethod]
-        // public void CostShip_CalculatesCostToShipAParcel_Int()
-        // {
-        //     // Arrange
-        //      Parcel newParcel = new Parcel("20 * 30 * 40", 60);
-        //     int expectedCostToShipValue = 24000;
-        //     int shippingCharges = 700;
+        [TestMethod]
+        public void CostShip_CalculatesCostToShipAParcel_Int()
+        {
+            // Arrange
+             Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            int expectedCostToShipValue = 24700;
+            int shippingCharges = 700;
 
-        //     // Act
-        //     var dimensions = newParcel.GetEachSide(newParcel.Dimension);
-        //     int returnedCostToShipValue = newParcel.CostToShip(dimensions.Length, dimensions.Width, dimensions.Height, shippingCharges);
+            // Act
+            var dimensions = newParcel.GetEachSide(newParcel.Dimension);
+            int returnedCostToShipValue = newParcel.CostToShip(dimensions.Length, dimensions.Width, dimensions.Height, shippingCharges);
 
-        //     // Assert
-        //     Assert.AreEqual(expectedCostToShipValue, returnedCostToShipValue);
-        // }
+            // Assert
+            Assert.AreEqual(expectedCostToShipValue, returnedCostToShipValue);
+        }
         
 
     }    
