@@ -6,8 +6,14 @@ using System.Collections.Generic;
 namespace Parcels.Tests.ModelTests  // Correct namespace
 {
     [TestClass]
-    public class MyParcelTests
+    public class MyParcelTests : IDisposable
     {
+
+        // Making sure to clear my list of parcels before moving on to a new test
+        public void Dispose()
+        {
+            Parcel.RemoveAllParcels();
+        }
         // First Test: Test for creating instance of Parcel
         [TestMethod]
         public void ParcelsConstructor_CreatesInstanceOfParcels_Parcels()
@@ -78,36 +84,81 @@ namespace Parcels.Tests.ModelTests  // Correct namespace
             // Assert
             Assert.AreEqual(parcelsNewWeightValue, newParcel.Weight);
         }
+        
 
-        // 6th Test: Test to get parcel from list of parcels
+        // 6th Test: Test to get all parcels from list of parcels
         [TestMethod]
-        public void GetParcel_ReturnsParcel_Parcel()
+        public void GetAllParcel_ReturnsParcel_Parcel()
         {
             // Arrange
             Parcel newParcel1 = new Parcel("20 * 30 * 40", 60);
             Parcel newParcel2 = new Parcel("20 * 40 * 20", 45);
             Parcel newParcel3 = new Parcel("20 * 90 * 30", 600);
-            List<object> expectedparcelsList = List<object>{newParcel1, newParcel2, newParcel3};
+            List<Parcel> expectedparcelsList = new List<Parcel>(){newParcel1, newParcel2, newParcel3};
             
             // Act
-            List<string> returnedParcelsList = Parcel.GetParcel(newParcel3);
+            List<Parcel> returnedParcelsList = Parcel.GetAllParcels();
 
 
             // Assert
-            CollectionAssert.AreEqual(expectedparcelsList, returnedParcelsList)
+            CollectionAssert.AreEqual(expectedparcelsList, returnedParcelsList);
 
         }
 
+        // 7th Test: Test for Finding a parcel Id to each Parcel
+        [TestMethod]
+        public void GetParcelsId_ReturnsParcelsIdNumber_Int()
+        {
+            // Arrange
+            Parcel newParcel1 = new Parcel("20 * 30 * 40", 60);
+            Parcel newParcel2 = new Parcel("20 * 40 * 20", 45);
+            Parcel newParcel3 = new Parcel("20 * 90 * 30", 600);
+            // Act
+            Parcel returnedParcelId = Parcel.FindParcel(2);
 
+            // Assert
+            Assert.AreEqual(newParcel2, returnedParcelId);
+        }
 
+        // 8th Test: Test Method to get the 3 sides of my parcels
+        [TestMethod]
+        public void GetEachSide_ReturnsDimensionsOfParcel_Int()
+        {
+            // Arrange
+            Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+            int expectedLengthVal = 20;
+            int expectedWidthVal = 30;
+            int expectedHeightVal = 40;
 
-        // 9th Test: Test for Attaching an Id to each Parcel
+            // Act
+            var dimensions = newParcel.GetEachSide(newParcel.Dimension);
+
+            // Assert
+            Assert.AreEqual(expectedLengthVal, dimensions.Length);
+            Assert.AreEqual(expectedWidthVal, dimensions.Width);
+            Assert.AreEqual(expectedHeightVal, dimensions.Height);
+        }
+
+        // 9th Test: Test Method Volume() that is called on Dimension
         // [TestMethod]
-        // public void GetParcelsId_ReturnsParcelsIdNo_Int()
+        // public void Volume_CalculatesVolumeOfParcel_Int()
         // {
         //     // Arrange
-        //     Parcel newParcel = new Parcel()
+        //     Parcel newParcel = new Parcel("20 * 30 * 40", 60);
+        //     int expectedLengthVal = 20;
+        //     int expectedWidthVal = 30;
+        //     int expectedHeightVal = 40;
+
+        //     int expectedVolumeValue = 24000;
+
+        //     // Act
+        //     var dimensions = newParcel.GetEachSide(newParcel.Dimension);
+        //     int returnedVolumeValue = newParcel.Volume(dimensions.Length, dimensions.Width, dimensions.Height);
+
+        //     // Assert
+        //     Assert.AreEqual(expectedVolumeValue, returnedVolumeValue);
         // }
+        
 
     }    
 }
