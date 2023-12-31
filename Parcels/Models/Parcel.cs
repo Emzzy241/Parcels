@@ -5,6 +5,9 @@ namespace Parcels.Models
 {
     public class Parcel
     {
+        public string ParcelsName { get; set; }
+        
+        
         public string Dimension { get; set; }
 
         public int Weight { get; set; }
@@ -14,8 +17,9 @@ namespace Parcels.Models
 
         private static List<Parcel> _parcelInstances = new List<Parcel>();
 
-        public Parcel(string parcelsDimension, int parcelsWeight)
+        public Parcel(string newParcelsName, string parcelsDimension, int parcelsWeight)
         {
+            ParcelsName = newParcelsName;
             Dimension = parcelsDimension;
             Weight = parcelsWeight;
             _parcelInstances.Add(this);
@@ -75,10 +79,10 @@ namespace Parcels.Models
             }
         }
 
-        public int Volume(int lengthVal, int widthVal, int heightVal)
-        {
-            return lengthVal * widthVal * heightVal;
-        } 
+        public int Volume(int length, int width, int height)
+    {
+        return length * width * height;
+    }
 
         public int CostToShip(int lengthVal, int widthVal, int heightVal, int myShippingCharges)
         {
