@@ -37,5 +37,18 @@ namespace Parcels.Controllers
             return View(foundParcel);
         }
 
+        [HttpGet("/parcels/delete")]
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost("/parcels/deleteall")]
+        public ActionResult DeleteAll()
+        {
+            Parcel.RemoveAllParcels();
+            return RedirectToAction("Index");
+        }
+
     }
 }
